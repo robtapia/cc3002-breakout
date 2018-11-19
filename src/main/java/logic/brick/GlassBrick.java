@@ -1,23 +1,18 @@
 package logic.brick;
 
-public class GlassBrick implements Brick {
+public class GlassBrick extends BrickClass{
+
+    GlassBrick(){
+        super(1,50);
+    }
+
+
     @Override
     public void hit() {
 
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
 
-    @Override
-    public int getScore() {
-        return 0;
-    }
 
-    @Override
-    public int remainingHits() {
-        return 0;
-    }
+
 }

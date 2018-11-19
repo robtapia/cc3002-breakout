@@ -1,23 +1,15 @@
 package logic.brick;
 
-public class WoodenBrick implements Brick {
+public class WoodenBrick extends BrickClass {
+
+    WoodenBrick(){
+        super(3,200);
+    }
+
     @Override
     public void hit() {
 
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
 
-    @Override
-    public int getScore() {
-        return 0;
-    }
-
-    @Override
-    public int remainingHits() {
-        return 0;
-    }
 }

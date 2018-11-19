@@ -1,23 +1,15 @@
 package logic.brick;
 
-public class MetalBrick implements Brick {
+public class MetalBrick extends BrickClass {
+
+    MetalBrick(){
+        super(10,0);
+    }
+
     @Override
     public void hit() {
 
     }
 
-    @Override
-    public boolean isDestroyed() {
-        return false;
-    }
 
-    @Override
-    public int getScore() {
-        return 0;
-    }
-
-    @Override
-    public int remainingHits() {
-        return 0;
-    }
 }
