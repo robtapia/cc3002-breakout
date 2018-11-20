@@ -9,7 +9,13 @@ public class GlassBrick extends BrickClass{
 
     @Override
     public void hit() {
-
+        if(this.isDestroyed()==false){
+            this.beHit();
+            if(this.isDestroyed()==true){
+                this.setChanged();
+                this.notifyObservers();
+            }
+        }
     }
 
 

@@ -1,28 +1,43 @@
 package logic.level;
 
 import logic.brick.Brick;
+import logic.brick.GlassBrick;
+import logic.brick.MetalBrick;
+import logic.brick.WoodenBrick;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class LevelClass implements Level{
+
+public class LevelClass extends Observable implements Level,Observer {
+    String name;
+    Level nextlvl;
+    List<Brick> bricks;
+    List<GlassBrick> glassBricks;
+    List<WoodenBrick>woodenBricks;
+    int currentPoints;
+
+
+
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public int getNumberOfBricks() {
-        return 0;
+        return bricks.size();
     }
 
     @Override
     public List<Brick> getBricks() {
-        return null;
+        return bricks;
     }
 
     @Override
     public Level getNextLevel() {
-        return null;
+        return nextlvl;
     }
 
     @Override
@@ -32,21 +47,32 @@ public class LevelClass implements Level{
 
     @Override
     public boolean hasNextLevel() {
-        return false;
+        return nextlvl.hasNextLevel();
     }
 
     @Override
     public int getPoints() {
-        return 0;
+        return glassBricks.size()*50+woodenBricks.size()*200;
     }
 
     @Override
     public Level addPlayingLevel(Level level) {
-        return null;
+        if (nextlvl==null){setNextLevel(level);}
+        else{
+            nextlvl.addPlayingLevel(level);
+        }
+        return null; //WTF?
     }
 
     @Override
     public void setNextLevel(Level level) {
+        nextlvl=level;
 
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        bricks.remove(o);
+        this.notifyObservers();
     }
 }

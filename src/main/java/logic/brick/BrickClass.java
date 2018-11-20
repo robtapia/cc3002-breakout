@@ -17,6 +17,7 @@ public abstract class BrickClass extends Observable implements Brick {
     public int remainingHits(){
         return this.remainingHits;
     }
+    public void beHit(){this.remainingHits=this.remainingHits-1;}
 
     public boolean isDestroyed(){
         if (this.remainingHits()==0) {
