@@ -12,7 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-public class LevelClass extends Observable implements Level,Observer {
+public class PlayableLevel extends Observable implements Level,Observer {
     String name;
     Level nextlvl;
     List<Brick> bricks;
@@ -21,17 +21,32 @@ public class LevelClass extends Observable implements Level,Observer {
     int currentPoints;
 
 
-    public LevelClass(String name, int numberOfBricks, double probOfGlass, double probOfMetal,int seed){
+    public PlayableLevel(String name, int numberOfBricks, double probOfGlass, double probOfMetal,int seed){
         this.name=name;
         bricks=new ArrayList<>();
         glassBricks=new ArrayList<>();
         woodenBricks=new ArrayList<>();
         currentPoints=0;
-        nextlvl=this;
+        nextlvl=new NullLevel();
+        Random random=new Random(seed);
+        for(int i=0;i<numberOfBricks;i++){
+            if(random.nextDouble()<probOfGlass){
+                GlassBrick gb=new GlassBrick();
+                glassBricks.add(gb);
+                bricks.add(gb);
+            }
+            else{
+                WoodenBrick wb=new WoodenBrick();
+                woodenBricks.add(wb);
+                bricks.add(wb);
+            }
+            if(random.nextDouble()<probOfMetal){
+                MetalBrick mb=new MetalBrick();
+                bricks.add(mb);
+            }
+        }
     }
-    public LevelClass(){
-        this("",0,0,0,0);
-    }
+
     @Override
     public String getName() {
         return this.name;
@@ -54,27 +69,25 @@ public class LevelClass extends Observable implements Level,Observer {
 
     @Override
     public boolean isPlayableLevel() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean hasNextLevel()
     {
-        return nextlvl!=this;
+        return getNextLevel().isPlayableLevel();
     }
 
     @Override
     public int getPoints() {
         return glassBricks.size()*50+woodenBricks.size()*200;
+
     }
 
     @Override
     public Level addPlayingLevel(Level level) {
-        if (nextlvl==null){setNextLevel(level);}
-        else{
-            nextlvl.addPlayingLevel(level);
-        }
-        return null; //WTF?
+        nextlvl=nextlvl.addPlayingLevel(level);
+        return this;
     }
 
     @Override

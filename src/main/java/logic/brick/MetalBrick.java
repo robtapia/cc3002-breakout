@@ -2,14 +2,12 @@ package logic.brick;
 
 public class MetalBrick extends BrickClass {
 
-    MetalBrick(){
+    public MetalBrick(){
         super(10,0);
     }
 
-    @Override
-    public void hit() {
 
-    }
+
 
 
 }

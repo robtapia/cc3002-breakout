@@ -1,5 +1,7 @@
 package logic.brick;
 
+import java.util.Observer;
+
 /**
  * Interface that represents a brick object.
  * <p>
@@ -7,7 +9,7 @@ package logic.brick;
  *
  * @author Juan-Pablo Silva
  */
-public interface Brick {
+public interface Brick extends Observer {
     /**
      * Defines that a brick has been hit.
      * Implementations should consider the events that a hit to a brick can trigger.

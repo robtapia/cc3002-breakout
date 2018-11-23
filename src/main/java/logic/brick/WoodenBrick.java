@@ -2,14 +2,12 @@ package logic.brick;
 
 public class WoodenBrick extends BrickClass {
 
-    WoodenBrick(){
+    public WoodenBrick(){
         super(3,200);
     }
 
-    @Override
-    public void hit() {
 
-    }
+
 
 
 }

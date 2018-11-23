@@ -38,6 +38,7 @@ public class BigTestT2 {
         assertEquals("", hw2.getLevelName());
         assertEquals(0, hw2.getCurrentPoints());
         assertEquals(0, hw2.getLevelPoints());
+        System.out.println(hw2.getBricks());
         assertTrue(hw2.getBricks().isEmpty());
 
         // Level
