@@ -5,7 +5,9 @@ import logic.brick.GlassBrick;
 import logic.brick.MetalBrick;
 import logic.brick.WoodenBrick;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,7 +21,17 @@ public class LevelClass extends Observable implements Level,Observer {
     int currentPoints;
 
 
-
+    public LevelClass(String name, int numberOfBricks, double probOfGlass, double probOfMetal,int seed){
+        this.name=name;
+        bricks=new ArrayList<>();
+        glassBricks=new ArrayList<>();
+        woodenBricks=new ArrayList<>();
+        currentPoints=0;
+        nextlvl=this;
+    }
+    public LevelClass(){
+        this("",0,0,0,0);
+    }
     @Override
     public String getName() {
         return this.name;
@@ -46,8 +58,9 @@ public class LevelClass extends Observable implements Level,Observer {
     }
 
     @Override
-    public boolean hasNextLevel() {
-        return nextlvl.hasNextLevel();
+    public boolean hasNextLevel()
+    {
+        return nextlvl!=this;
     }
 
     @Override
