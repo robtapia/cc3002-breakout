@@ -29,6 +29,7 @@ public abstract class BrickClass extends Observable implements Brick {
         if (this.isDestroyed() == false) {
             this.beHit();
             if (this.isDestroyed() == true) {
+
                 this.setChanged();
                 this.notifyObservers();
             }

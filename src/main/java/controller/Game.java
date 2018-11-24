@@ -45,7 +45,7 @@ public class Game implements Observer {
         return getCurrentLevel().isPlayableLevel();
     }
     public String getLevelName(){
-        return"";
+        return getCurrentLevel().getName();
     }
     public Level getCurrentLevel(){
         return level;
@@ -58,10 +58,10 @@ public class Game implements Observer {
         getCurrentLevel().setNextLevel(getCurrentLevel().getNextLevel().addPlayingLevel(l));
     }
     public int getLevelPoints(){
-        return 0;
+        return getCurrentLevel().getPoints();
     }
     public int getCurrentPoints(){
-        return 0;
+        return currentScore;
     }
     public int getBallsLeft(){
         return this.balls;
@@ -81,6 +81,8 @@ public class Game implements Observer {
     }
     public Level newLevel(String name, int numberOfBricks, double probOfGlass, double probOfMetal, int seed){
         Level newLevel =new PlayableLevel(name,numberOfBricks,probOfGlass,probOfMetal,seed);
+
+        ((PlayableLevel) newLevel).addObserver(this);
         for(Brick b:newLevel.getBricks()){
             BrickClass bc= (BrickClass)b;
             bc.addObserver(this);
@@ -92,17 +94,23 @@ public class Game implements Observer {
     public void update(Observable o, Object arg) {
         if( o instanceof GlassBrick){
             currentScore=currentScore+50;
+
         }
         if( o instanceof WoodenBrick){
             currentScore=currentScore+200;
+
         }
         if( o instanceof MetalBrick){
             balls=balls+1;
         }
-        if( o instanceof Level){
-            
+        if( o instanceof PlayableLevel){
+            System.out.println("level");
+            goNextLevel();
         }
 
+    }
+    public int numberOfBricks(){
+        return getCurrentLevel().getBricks().size();
     }
 
 }
