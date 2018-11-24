@@ -4,6 +4,7 @@ import logic.brick.GlassBrick;
 import logic.brick.MetalBrick;
 import logic.brick.WoodenBrick;
 import logic.level.Level;
+import logic.level.PlayableLevel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -494,6 +495,7 @@ public class BigTestT2 {
         Level level2 = hw2.newLevelWithBricksFull("Level 2", 30, 0.4, 0.3, seed);
         // 9 Glass, 31 Wooden, 12 Metal
         Level level3 = hw2.newLevelWithBricksFull("Level 3", 40, 0.2, 0.4, seed);
+
         hw2.setCurrentLevel(level1);
         hw2.addPlayingLevel(level2);
         hw2.addPlayingLevel(level3);
@@ -541,6 +543,7 @@ public class BigTestT2 {
         repeat(3, () -> hw2.getBricks().forEach(Brick::hit));
         expectedScore += glassScore * 9 + woodenScore * 31;
         assertTrue(hw2.winner());
+
         assertNotEquals(level3, hw2.getCurrentLevel());
         assertEquals(expectedScore, hw2.getCurrentPoints());
         assertEquals(initialBalls + metalBricks.size(), hw2.getBallsLeft());

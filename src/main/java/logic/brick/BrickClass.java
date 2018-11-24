@@ -1,4 +1,6 @@
 package logic.brick;
+import Visitor.BrickCounter;
+
 import java.util.Observable;
 
 public abstract class BrickClass extends Observable implements Brick {
@@ -8,6 +10,11 @@ public abstract class BrickClass extends Observable implements Brick {
     BrickClass(int hits,int score){
         this.remainingHits=hits;
         this.score=score;
+    }
+
+    @Override
+    public void accept(BrickCounter v) {
+        v.visit(this);
     }
 
     public int getScore(){

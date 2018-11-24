@@ -42,6 +42,8 @@ public class PlayableLevel extends Observable implements Level,Observer {
                 wb.addObserver(this);
                 bricks.add(wb);
             }
+        }
+        for (int j=0;j<numberOfBricks;j++){
             if(random.nextDouble()<probOfMetal){
                 MetalBrick mb=new MetalBrick();
                 mb.addObserver(this);
@@ -49,6 +51,9 @@ public class PlayableLevel extends Observable implements Level,Observer {
 
             }
         }
+    }
+    public List<WoodenBrick> getWoodenBricks(){
+        return woodenBricks;
     }
 
     @Override
@@ -104,19 +109,19 @@ public class PlayableLevel extends Observable implements Level,Observer {
     public void update(Observable o, Object arg) {
 
         if(o instanceof WoodenBrick){
-            bricks.remove(o);
+            //bricks.remove(o);
             woodenBricks.remove(o);
 
             //this.notifyObservers();
         }
         if(o instanceof GlassBrick){
-            bricks.remove(o);
+            //bricks.remove(o);
             glassBricks.remove(o);
 
             //this.notifyObservers();
         }
         if(o instanceof MetalBrick){
-            bricks.remove(o);
+            //bricks.remove(o);
         }
         if(glassBricks.size()==0 && woodenBricks.size()==0) {
             setChanged();

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import Visitor.BrickCounter;
 import logic.brick.*;
 import logic.level.Level;
 import logic.level.NullLevel;
@@ -18,7 +19,7 @@ public class Game implements Observer {
     private int balls;
     private Level level;
     private int currentScore;
-    private int totalScore;
+    private int previousLevelsScore;
     public Game(int balls) {
         this.balls=balls;
         level=new NullLevel();
@@ -32,7 +33,17 @@ public class Game implements Observer {
      * @return true if the game has a winner, false otherwise
      */
     public boolean winner() {
-        return false;
+        //return (getCurrentLevel().isPlayableLevel()&&!(getCurrentLevel().getNextLevel().isPlayableLevel())&&numberOfBricks()==0);
+        boolean a=getCurrentLevel().isPlayableLevel();
+        boolean b=!getCurrentLevel().getNextLevel().isPlayableLevel();
+        boolean c=currentScore-previousLevelsScore==getCurrentLevel().getPoints();
+
+
+
+
+        return ((!getCurrentLevel().isPlayableLevel()&&currentScore>0) ||(a&&b && c));
+
+
     }
     public boolean hasNextLevel() {
         return getCurrentLevel().getNextLevel().isPlayableLevel();
@@ -104,13 +115,20 @@ public class Game implements Observer {
             balls=balls+1;
         }
         if( o instanceof PlayableLevel){
-            System.out.println("level");
+            previousLevelsScore=currentScore;
+
             goNextLevel();
+
         }
 
     }
     public int numberOfBricks(){
-        return getCurrentLevel().getBricks().size();
+        BrickCounter counter=new BrickCounter();
+        List<Brick> aux=getCurrentLevel().getBricks();
+        for (Brick b:aux){
+            b.accept(counter);
+        }
+        return counter.getCounter();
     }
 
 }

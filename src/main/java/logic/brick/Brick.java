@@ -1,5 +1,7 @@
 package logic.brick;
 
+import Visitor.BrickCounter;
+
 import java.util.Observer;
 
 /**
@@ -36,4 +38,5 @@ public interface Brick{
      * @return the remaining hits to destroy de brick
      */
     int remainingHits();
+    void accept(BrickCounter v);
 }

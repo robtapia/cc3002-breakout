@@ -1,6 +1,7 @@
 package logic.level;
 
 import logic.brick.Brick;
+import logic.brick.WoodenBrick;
 
 import java.util.List;
 
@@ -72,4 +73,5 @@ public interface Level {
      * @param level the next level of a level object
      */
     void setNextLevel(Level level);
+    List<WoodenBrick> getWoodenBricks();
 }

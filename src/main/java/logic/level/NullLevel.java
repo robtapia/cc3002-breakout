@@ -1,6 +1,7 @@
 package logic.level;
 
 import logic.brick.Brick;
+import logic.brick.WoodenBrick;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,8 @@ public class NullLevel implements Level {
     public int getNumberOfBricks() {
         return 0;
     }
+
+    public List<WoodenBrick> getWoodenBricks(){return null;}
 
     @Override
     public List<Brick> getBricks() {
