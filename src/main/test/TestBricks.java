@@ -13,6 +13,5 @@ public class TestBricks {
 
     }
 
-    @Test
-    public void
+
 }

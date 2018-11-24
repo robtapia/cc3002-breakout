@@ -28,7 +28,7 @@ public class NullLevel implements Level {
         return 0;
     }
 
-    public List<WoodenBrick> getWoodenBricks(){return null;}
+
 
     @Override
     public List<Brick> getBricks() {

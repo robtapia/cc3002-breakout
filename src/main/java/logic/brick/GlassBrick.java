@@ -13,9 +13,11 @@ public class GlassBrick extends BrickClass{
     public GlassBrick(){
         super(1,50);
     }
+    @Override
     public void beObserved(Game g){
         g.observeGlassBrick();
     }
+    @Override
     public void beObservedByLevel(Level l){
         l.levelObserveGlassBrick(this);
     }

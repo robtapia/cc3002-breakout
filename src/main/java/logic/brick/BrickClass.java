@@ -28,21 +28,25 @@ public abstract class BrickClass extends Observable implements Brick, Observable
         v.visitBrick(this);
     }
 
+    @Override
     public int getScore(){
         return this.score;
     }
 
+    @Override
     public int remainingHits(){
         return this.remainingHits;
     }
     public void beHit(){this.remainingHits=this.remainingHits-1;}
 
+    @Override
     public boolean isDestroyed(){
         if (this.remainingHits()==0) {
             return true;
         }
         return false;
     }
+    @Override
     public void hit() {
         if (this.isDestroyed() == false) {
             this.beHit();

@@ -13,6 +13,7 @@ public class MetalBrick extends BrickClass {
     public MetalBrick(){
         super(10,0);
     }
+    @Override
     public void beObserved(Game g){
         g.observeMetalBrick();
     }

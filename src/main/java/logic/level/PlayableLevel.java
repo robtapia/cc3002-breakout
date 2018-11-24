@@ -54,9 +54,7 @@ public class PlayableLevel extends Observable implements Level,Observer {
         visitor.visitLevel(this);
 
     }
-    public List<WoodenBrick> getWoodenBricks(){
-        return woodenBricks;
-    }
+
 
     @Override
     public String getName() {

@@ -1,5 +1,6 @@
 package logic.brick;
 
+import logic.level.Visitable;
 import visitor.Visitor;
 import controller.ObservableByGame;
 import logic.level.ObservableByLevel;
@@ -11,7 +12,7 @@ import logic.level.ObservableByLevel;
  *
  * @author Juan-Pablo Silva
  */
-public interface Brick extends ObservableByGame,ObservableByLevel {
+public interface Brick extends ObservableByGame,ObservableByLevel,Visitable {
     /**
      * Defines that a brick has been hit.
      * Implementations should consider the events that a hit to a brick can trigger.

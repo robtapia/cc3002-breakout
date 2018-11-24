@@ -14,6 +14,7 @@ public class WoodenBrick extends BrickClass {
     public WoodenBrick(){
         super(3,200);
     }
+    @Override
     public void beObserved(Game g){
         g.observeWoodenBrick();
     }

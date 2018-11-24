@@ -157,7 +157,7 @@ public class Game implements Observer {
      */
     public int numberOfBricks(){
         BrickCounter counter=new BrickCounter();
-        counter.visitLevel(getCurrentLevel());
+        getCurrentLevel().accept(counter);
         return counter.getCounter();
     }
 

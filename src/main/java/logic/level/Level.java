@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Juan-Pablo Silva
  */
-public interface Level extends ObservableByGame {
+public interface Level extends ObservableByGame,Visitable {
     /**
      * Gets the level's name. Each level must have a name.
      *

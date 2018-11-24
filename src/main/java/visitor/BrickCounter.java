@@ -16,11 +16,13 @@ public class BrickCounter implements Visitor {
     public BrickCounter(){
         brickcount=0;
     }
+    @Override
     public void visitBrick(Brick b){
         if (!b.isDestroyed()) {
             brickcount += 1;
         }
     }
+    @Override
     public void visitLevel(Level l){
         for (Brick b:l.getBricks()){
             b.accept(this);
