@@ -1,6 +1,9 @@
 package logic.brick;
 
 import Visitor.BrickCounter;
+import Visitor.Visitor;
+import controller.ObservableByGame;
+import logic.level.ObservableByLevel;
 
 import java.util.Observer;
 
@@ -11,7 +14,7 @@ import java.util.Observer;
  *
  * @author Juan-Pablo Silva
  */
-public interface Brick{
+public interface Brick extends ObservableByGame,ObservableByLevel {
     /**
      * Defines that a brick has been hit.
      * Implementations should consider the events that a hit to a brick can trigger.
@@ -38,5 +41,5 @@ public interface Brick{
      * @return the remaining hits to destroy de brick
      */
     int remainingHits();
-    void accept(BrickCounter v);
+    void accept(Visitor v);
 }

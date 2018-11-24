@@ -63,7 +63,7 @@ public class HomeworkTwoFacade {
      * @return the list of bricks
      */
     public List<Brick> getBricks() {
-        return game.getBricks();
+        return game.getCurrentLevel().getBricks();
     }
 
     /**
@@ -72,14 +72,14 @@ public class HomeworkTwoFacade {
      * @return true if the current level's next level is playable, false otherwise
      */
     public boolean hasNextLevel() {
-        return game.hasNextLevel();
+        return game.getCurrentLevel().getNextLevel().isPlayableLevel();
     }
 
     /**
      * Pass to the next level of the current {@link Level}. Ignores all conditions and skip to the next level.
      */
     public void goNextLevel() {
-        game.goNextLevel();
+        game.setCurrentLevel(getCurrentLevel().getNextLevel());
     }
 
     /**
@@ -88,7 +88,7 @@ public class HomeworkTwoFacade {
      * @return true if the current level is playable, false otherwise
      */
     public boolean hasCurrentLevel() {
-        return game.hasCurrentLevel();
+        return game.getCurrentLevel().isPlayableLevel();
     }
 
     /**
@@ -97,7 +97,7 @@ public class HomeworkTwoFacade {
      * @return the name of the current level
      */
     public String getLevelName() {
-        return game.getLevelName();
+        return game.getCurrentLevel().getName();
     }
 
     /**
@@ -126,7 +126,7 @@ public class HomeworkTwoFacade {
      * @param level the level to be added
      */
     public void addPlayingLevel(Level level) {
-        game.addPlayingLevel(level);
+        game.getCurrentLevel().setNextLevel(getCurrentLevel().getNextLevel().addPlayingLevel(level));
 
     }
 
@@ -136,7 +136,7 @@ public class HomeworkTwoFacade {
      * @return the number of points in the current level
      */
     public int getLevelPoints() {
-        return game.getLevelPoints();
+        return game.getCurrentLevel().getPoints();
     }
 
     /**

@@ -1,5 +1,6 @@
 package logic.level;
 
+import controller.ObservableByGame;
 import logic.brick.Brick;
 import logic.brick.WoodenBrick;
 
@@ -10,7 +11,7 @@ import java.util.List;
  *
  * @author Juan-Pablo Silva
  */
-public interface Level {
+public interface Level extends ObservableByGame {
     /**
      * Gets the level's name. Each level must have a name.
      *
@@ -73,5 +74,7 @@ public interface Level {
      * @param level the next level of a level object
      */
     void setNextLevel(Level level);
-    List<WoodenBrick> getWoodenBricks();
+    void levelObserveGlassBrick(Brick b);
+    void levelObserveWoodenBrick(Brick b);
+
 }

@@ -1,10 +1,7 @@
 import facade.HomeworkTwoFacade;
-import logic.brick.Brick;
-import logic.brick.GlassBrick;
-import logic.brick.MetalBrick;
-import logic.brick.WoodenBrick;
+import logic.brick.*;
 import logic.level.Level;
-import logic.level.PlayableLevel;
+
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,10 +1,9 @@
 package logic.level;
 
-import logic.brick.Brick;
-import logic.brick.GlassBrick;
-import logic.brick.MetalBrick;
-import logic.brick.WoodenBrick;
-
+import Visitor.BrickCounter;
+import controller.Game;
+import logic.brick.*;
+import Visitor.Visitor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -51,6 +50,10 @@ public class PlayableLevel extends Observable implements Level,Observer {
 
             }
         }
+    }
+    public void accept(Visitor visitor){
+        visitor.visitLevel(this);
+
     }
     public List<WoodenBrick> getWoodenBricks(){
         return woodenBricks;
@@ -104,28 +107,29 @@ public class PlayableLevel extends Observable implements Level,Observer {
         nextlvl=level;
 
     }
+    public void beObserved(Game g){
+        g.observePlayableLevel();
+    }
 
     @Override
     public void update(Observable o, Object arg) {
 
-        if(o instanceof WoodenBrick){
-            //bricks.remove(o);
-            woodenBricks.remove(o);
-
-            //this.notifyObservers();
-        }
-        if(o instanceof GlassBrick){
-            //bricks.remove(o);
-            glassBricks.remove(o);
-
-            //this.notifyObservers();
-        }
-        if(o instanceof MetalBrick){
-            //bricks.remove(o);
+        if(o instanceof ObservableByLevel){
+            ((ObservableByLevel) o).beObservedByLevel(this);
         }
         if(glassBricks.size()==0 && woodenBricks.size()==0) {
             setChanged();
             notifyObservers();
         }
+    }
+
+    @Override
+    public void levelObserveGlassBrick(Brick gb) {
+        glassBricks.remove(gb);
+    }
+
+    @Override
+    public void levelObserveWoodenBrick(Brick wb) {
+        woodenBricks.remove(wb);
     }
 }
