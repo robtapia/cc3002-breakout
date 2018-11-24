@@ -34,6 +34,7 @@ Breakout
   Se tienen dos Observers y dos Observables. Los Observers son Game (que observa Levels y Bricks) y Level (que observa solo Bricks).
   El comportamiento cuando se golpea un brick consiste en revisar si dicho brick esta roto luego de ser golpeado, en caso de que esto haya sido asi, se notifica a sus observers, quienes verifican que quien envio la notificacion sea efectivamente una instancia de ObservableByGame/Level segun corresponda, una vez esto ocurre, se produce un double-dispatch para poder confirmar que fue lo que mando la notificacion (es decir, que tipo de ladrillo), en base a esto, Game sumara los puntos correspondientes y Level sacara al brick del ArrayList necesario, ademas de revisar si es que es necesario terminar el level actual, en cuyo caso notificara tambien a su propio Observer, es decir, a Game.
   Por otro lado, cuando se termina un level y este avisa a Game, mediante el mismo mecanismo anteriormente descrito, ante lo cual Game cambia su level actual por el siguiente en la lista.
+  
   Visitor
   ------
   La implementacion de Visitor consiste en la clase BrickCounter, la cual puede visitar tipos que implementen la interfaz visitable, en este caso particular, Visitable es implementado por bricks y por levels. Cuando un level es visitado, le dice a sus bricks que "acepten" al visitor, y cuando un brick es visitado, si es que no esta destruido, suma 1 al contador del visitor. Finalmente se usa getCounter para recibir la cantidad de ladrillos no destruidos en un nivel.
