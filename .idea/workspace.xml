@@ -990,7 +990,7 @@
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
           <ID>JavaScript-modules-diagram</ID>
-          <OriginalElement>$PROJECT_DIR$/src/main</OriginalElement>
+          <OriginalElement />
           <nodes />
           <notes />
           <edges />
@@ -1007,7 +1007,7 @@
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
           <ID>JavaScript-modules-diagram</ID>
-          <OriginalElement>$PROJECT_DIR$</OriginalElement>
+          <OriginalElement />
           <nodes />
           <notes />
           <edges />
