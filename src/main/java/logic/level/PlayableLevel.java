@@ -9,7 +9,10 @@ import java.util.Random;
 import java.util.Observable;
 import java.util.Observer;
 
-
+/**
+ * Establece el comportamiento de un nivel jugable
+ * @author Roberto Tapia
+ */
 public class PlayableLevel extends Observable implements Level,Observer {
     String name;
     Level nextlvl;
@@ -18,7 +21,14 @@ public class PlayableLevel extends Observable implements Level,Observer {
     List<WoodenBrick>woodenBricks;
     int currentPoints;
 
-
+    /**
+     * Constructor, genera niveles de manera pseudo-aleatoria en base a las probabilidades y el seed que le son entregados.
+     * @param name              nombre del nivel a crear.
+     * @param numberOfBricks    cantidad total de glass y wooden bricks a crear.    
+     * @param probOfGlass       probabilidad de que un brick en particular sea un GlassBrick.
+     * @param probOfMetal       probabilidad de que por cada GlassBrick o WoodenBrick generado, se genera ademas un MetalBrick.
+     * @param seed              seed que se usara para controlar la pseudo-aleatoriedad con el objetivo de poder testear.
+     */
     public PlayableLevel(String name, int numberOfBricks, double probOfGlass, double probOfMetal,int seed){
         this.name=name;
         bricks=new ArrayList<>();
@@ -50,6 +60,7 @@ public class PlayableLevel extends Observable implements Level,Observer {
             }
         }
     }
+    @Override
     public void accept(Visitor visitor){
         visitor.visitLevel(this);
 
@@ -104,6 +115,7 @@ public class PlayableLevel extends Observable implements Level,Observer {
         nextlvl=level;
 
     }
+    @Override
     public void beObserved(Game g){
         g.observePlayableLevel();
     }
