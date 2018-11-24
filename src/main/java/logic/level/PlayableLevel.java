@@ -1,9 +1,8 @@
 package logic.level;
 
-import Visitor.BrickCounter;
 import controller.Game;
 import logic.brick.*;
-import Visitor.Visitor;
+import visitor.Visitor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

@@ -1,12 +1,17 @@
 package logic.level;
 
-import Visitor.Visitor;
+import visitor.Visitor;
 import controller.Game;
 import logic.brick.Brick;
 import logic.brick.WoodenBrick;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Modela el comportamiento de un nivel no-jugable.
+ * @author Roberto Tapia
+ */
 
 public class NullLevel implements Level {
     public NullLevel(){

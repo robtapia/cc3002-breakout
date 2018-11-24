@@ -74,7 +74,18 @@ public interface Level extends ObservableByGame {
      * @param level the next level of a level object
      */
     void setNextLevel(Level level);
+
+    /**
+     * Informa a level que el elemento que lo notifico fuen un GlassBrick
+     * @param b brick que notifico a un level
+     * @author Roberto Tapia
+     */
     void levelObserveGlassBrick(Brick b);
+    /**
+     * Informa a level que el elemento que lo notifico fuen un WoodenBrick
+     * @param b brick que notifico a un level
+     * @author Roberto Tapia
+     */
     void levelObserveWoodenBrick(Brick b);
 
 }

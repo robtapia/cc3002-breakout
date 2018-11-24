@@ -1,13 +1,23 @@
 package logic.brick;
-import Visitor.*;
+import visitor.*;
 import controller.ObservableByGame;
 
 import java.util.Observable;
+
+/**
+ * Clase abstracta que modela comportamientos genericos para los bricks especificos
+ * @author Roberto Tapia
+ */
 
 public abstract class BrickClass extends Observable implements Brick, ObservableByGame {
     private int remainingHits;
     private int score;
 
+    /**
+     * Constructor de ladrillos
+     * @param hits  Cantidad de golpes que el ladrillo podra recibir antes de destruirse
+     * @param score Cantidad de puntos que el ladrillo entregara al ser destruido
+     */
     BrickClass(int hits,int score){
         this.remainingHits=hits;
         this.score=score;

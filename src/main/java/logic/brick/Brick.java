@@ -1,11 +1,8 @@
 package logic.brick;
 
-import Visitor.BrickCounter;
-import Visitor.Visitor;
+import visitor.Visitor;
 import controller.ObservableByGame;
 import logic.level.ObservableByLevel;
-
-import java.util.Observer;
 
 /**
  * Interface that represents a brick object.
@@ -41,5 +38,11 @@ public interface Brick extends ObservableByGame,ObservableByLevel {
      * @return the remaining hits to destroy de brick
      */
     int remainingHits();
+
+    /**
+     * Indica al visitor v que debe visitar al presente ladrillo (this)
+     * @param v visitor que interactua con el brick
+     * @author Roberto Tapia
+     */
     void accept(Visitor v);
 }
