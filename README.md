@@ -38,5 +38,8 @@ Breakout
   Visitor
   ------
   La implementacion de Visitor consiste en la clase BrickCounter, la cual puede visitar tipos que implementen la interfaz visitable, en este caso particular, Visitable es implementado por bricks y por levels. Cuando un level es visitado, le dice a sus bricks que "acepten" al visitor, y cuando un brick es visitado, si es que no esta destruido, suma 1 al contador del visitor. Finalmente se usa getCounter para recibir la cantidad de ladrillos no destruidos en un nivel.
-  
-  
+
+Instrucciones
+=======
+  Para poder compilar y probar el juego se necesitara Java 8. Para probar los métodos sera necesario crear una instancia de la clase HomeworkTwoFacade. Una vez creada dicha instancia, se pueden crear niveles con newLevelWithBricksFull dandole como input un string nombre, la cantidad de bricks deseada, la probabilidad (entre 0 y 1) de que un brick sea glassBrick, y la probabilidad de que se genere un MetalBrick por cada brick generado. Estos niveles pueden ser agregados al juego mediante los metodos setCurrentLevel o addPlayingLevel y finalmente se pueden obtener tambien los bricks presentes en un nivel con el metodo getBricks.
+
